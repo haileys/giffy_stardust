@@ -31,7 +31,7 @@ pub fn read(r: &mut Reader) -> Result<Gif, &'static str> {
         Err(err) => return Err(err.desc)
     };
 
-    if gif89a != "GIF89a".to_owned().into_bytes() {
+    if gif89a != "GIF89a".to_string().into_bytes() {
         return Err("not a GIF89a")
     }
 
@@ -51,7 +51,7 @@ pub fn read(r: &mut Reader) -> Result<Gif, &'static str> {
     };
 
     let gct_size = if (flags & 1) == 1 {
-        1 << ((flags >> 5) + 1)
+        1 << ((flags as uint >> 5) + 1)
     } else {
         0
     };
@@ -68,7 +68,7 @@ pub fn read(r: &mut Reader) -> Result<Gif, &'static str> {
 
     let mut gct = Vec::new();
 
-    for _ in range(0, gct_size) {
+    for _ in range(0u, gct_size) {
         match read_color(r) {
             Ok(color) => gct.push(color),
             Err(err) => return Err(err.desc),

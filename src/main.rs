@@ -7,11 +7,11 @@ fn main() {
     let args = os::args();
 
     if args.len() < 2 {
-        println!("Usage: {} <gif file>", args[0]);
+        println!("Usage: {} <gif file>", args.get(0));
         return;
     }
 
-    let path = &Path::new(args[1]);
+    let path = &Path::new(args.get(1).as_bytes());
 
     let mut file = match File::open(path) {
         Ok(file) => file,
