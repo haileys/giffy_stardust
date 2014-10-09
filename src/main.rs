@@ -1,5 +1,5 @@
 use std::os;
-use std::io::{File, Path};
+use std::io::File;
 
 mod gif;
 

@@ -1,4 +1,4 @@
-use std::io::{Reader, IoResult, IoError};
+use std::io::{Reader, IoResult};
 use std::vec::Vec;
 
 pub struct Color {
