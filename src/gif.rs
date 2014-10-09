@@ -1,18 +1,11 @@
 use std::io::{Reader, IoResult};
 use std::vec::Vec;
 
+#[deriving(Show)]
 pub struct Color {
     r: u8,
     g: u8,
     b: u8,
-}
-
-pub struct Gif {
-    width: u16,
-    height: u16,
-    background_color_index: u8,
-    pixel_aspect_ratio: u8,
-    gct: Vec<Color>,
 }
 
 fn read_color(reader: &mut Reader) -> IoResult<Color> {
@@ -21,6 +14,15 @@ fn read_color(reader: &mut Reader) -> IoResult<Color> {
     let b = match reader.read_u8() { Ok(b) => b, Err(e) => return Err(e) };
 
     Ok(Color { r: r, g: g, b: b })
+}
+
+#[deriving(Show)]
+pub struct Gif {
+    width: u16,
+    height: u16,
+    background_color_index: u8,
+    pixel_aspect_ratio: u8,
+    gct: Vec<Color>,
 }
 
 pub fn read(r: &mut Reader) -> Result<Gif, &'static str> {

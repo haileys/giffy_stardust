@@ -23,5 +23,5 @@ fn main() {
         Err(msg) => return println!("Could not read GIF: {}", msg)
     };
 
-    println!("GIF dimensions: {}x{}", gif.width, gif.height);
+    println!("{}", gif);
 }
