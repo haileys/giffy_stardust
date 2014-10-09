@@ -66,7 +66,7 @@ pub fn read(r: &mut Reader) -> Result<Gif, &'static str> {
 
     let mut gct = Vec::new();
 
-    for i in range(0, gct_size) {
+    for _ in range(0, gct_size) {
         match read_color(r) {
             Ok(color) => gct.push(color),
             Err(err) => return Err(err.desc),
