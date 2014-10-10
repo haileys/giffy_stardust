@@ -1,3 +1,5 @@
+extern crate sdl2;
+
 use std::os;
 use std::io::File;
 
@@ -23,5 +25,26 @@ fn main() {
         Err(msg) => return println!("Could not read GIF: {}", msg)
     };
 
-    println!("{}", gif);
+    sdl2::init(sdl2::INIT_VIDEO);
+
+    let window = match sdl2::video::Window::new(
+            "giffy_stardust",
+            sdl2::video::PosCentered,
+            sdl2::video::PosCentered,
+            gif.width as int,
+            gif.height as int,
+            sdl2::video::OPENGL) {
+        Ok(window) => window,
+        Err(err) => return println!("Could not create window: {}", err),
+    };
+
+    loop {
+        match sdl2::event::poll_event() {
+            sdl2::event::QuitEvent(_) => break,
+            sdl2::event::KeyDownEvent(_, _, sdl2::keycode::EscapeKey, _, _) => break,
+            _ => {},
+        }
+    };
+
+    sdl2::quit();
 }

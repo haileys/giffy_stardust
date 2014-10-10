@@ -18,8 +18,8 @@ fn read_color(reader: &mut Reader) -> IoResult<Color> {
 
 #[deriving(Show)]
 pub struct Gif {
-    width: u16,
-    height: u16,
+    pub width: u16,
+    pub height: u16,
     background_color_index: u8,
     pixel_aspect_ratio: u8,
     gct: Vec<Color>,
