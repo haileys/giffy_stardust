@@ -1,0 +1,8 @@
+[package]
+name = "giffy_stardust"
+version = "0.0.1"
+authors = ["charlie@charliesomerville.com"]
+
+[[bin]]
+name = "giffy_stardust"
+path = "src/main.rs"
