@@ -6,3 +6,6 @@ authors = ["charlie@charliesomerville.com"]
 [[bin]]
 name = "giffy_stardust"
 path = "src/main.rs"
+
+[dependencies.sdl2]
+git = "https://github.com/AngryLawyer/rust-sdl2.git"
